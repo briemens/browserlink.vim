@@ -25,6 +25,7 @@ command!        -nargs=0 BLEvaluateWord      call browserlink#EvaluateWord()
 command!        -nargs=1 BLEval              call browserlink#evaluateJS(<f-args>)
 command!        -nargs=0 BLReloadPage        call browserlink#sendCommand("reload/page")
 command!        -nargs=0 BLReloadCSS         call browserlink#sendCommand("reload/css")
+command!        -nargs=0 BLReloadJS          call browserlink#sendCommand("reload/js")
 command!        -nargs=0 BLConsoleClear      call browserlink#sendCommand("clear")
 command!        -nargs=0 BLConsole           edit browserlink/console
 command!        -nargs=0 BLErrors            call browserlink#getErrors()
@@ -38,6 +39,7 @@ if !exists("g:bl_no_mappings")
 	nmap <silent><Leader>bf :BLEvaluateWord<CR>
 	nmap <silent><Leader>br :BLReloadPage<CR>
 	nmap <silent><Leader>bc :BLReloadCSS<CR>
+	nmap <silent><Leader>bj :BLReloadJS<CR>
 endif
 
 function! s:autoReload()
@@ -48,7 +50,8 @@ endfunction
 
 function! s:setupHandlers()
 	au BufWritePost * call s:autoReload()
-	au BufWritePost *.css :BLReloadCSS
+	au BufWritePost css :BLReloadCSS
+	au BufWritePost javascript,typescript,typescript.tsx :BLReloadJS
 endfunction
 
 if !exists("g:bl_no_autoupdate")
