@@ -34,12 +34,12 @@ command!        -nargs=0 BLTraceLine         call browserlink#traceLine()
 autocmd BufReadCmd browserlink/console* call browserlink#getConsole()
 
 if !exists("g:bl_no_mappings")
-	vmap <silent><Leader>be :BLEvaluateSelection<CR>
-	nmap <silent><Leader>be :BLEvaluateBuffer<CR>
-	nmap <silent><Leader>bf :BLEvaluateWord<CR>
-	nmap <silent><Leader>br :BLReloadPage<CR>
-	nmap <silent><Leader>bc :BLReloadCSS<CR>
-	nmap <silent><Leader>bj :BLReloadJS<CR>
+	vmap <silent><Leader>ce :BLEvaluateSelection<CR>
+	nmap <silent><Leader>ce :BLEvaluateBuffer<CR>
+	nmap <silent><Leader>cf :BLEvaluateWord<CR>
+	nmap <silent><Leader>cr :BLReloadPage<CR>
+	nmap <silent><Leader>cc :BLReloadCSS<CR>
+	nmap <silent><Leader>cj :BLReloadJS<CR>
 endif
 
 function! s:autoReload()
